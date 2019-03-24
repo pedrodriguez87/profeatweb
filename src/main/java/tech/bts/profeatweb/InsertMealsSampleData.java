@@ -1,6 +1,8 @@
+package tech.bts.profeatweb;
+
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.jdbc.datasource.init.ScriptUtils;
-import repository.DataSourceUtil;
+import tech.bts.profeatweb.repository.DataSourceUtil;
 
 import javax.sql.DataSource;
 import java.sql.Connection;

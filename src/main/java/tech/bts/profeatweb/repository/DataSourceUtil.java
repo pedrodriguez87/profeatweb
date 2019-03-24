@@ -1,4 +1,4 @@
-package repository;
+package tech.bts.profeatweb.repository;
 
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 

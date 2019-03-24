@@ -1,6 +1,5 @@
-package data;
+package tech.bts.profeatweb.data;
 
-import java.util.List;
 import java.util.Map;
 
 public class Meal {
@@ -14,6 +13,10 @@ public class Meal {
     private vegetables hasvegetables;
     private typeofdish typeofdish;
     private Map<Employee, String> feedbacks;
+
+    public Meal() {
+
+    }
 
     public Meal(long id, String name, double price, int rate, String mainprotein, Restaurant restaurant, vegetables hasvegetables, Meal.typeofdish typeofdish, Map<Employee, String> feedbacks) {
         this.id = id;

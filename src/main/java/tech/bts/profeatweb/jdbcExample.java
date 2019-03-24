@@ -1,19 +1,15 @@
-import data.Meal;
-import repository.DataSourceUtil;
+package tech.bts.profeatweb;
 
-import javax.sql.DataSource;
-import java.sql.Connection;
-import java.sql.ResultSet;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
 import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.List;
+
 
 public class jdbcExample {
 
     public static void main(String[] args) throws SQLException {
 
-        DataSource dataSource = DataSourceUtil.getDataSourceInPath();
+        /*DataSource dataSource = DataSourceUtil.getDataSourceInPath();
 
         Connection connection = dataSource.getConnection();
         Statement statement = connection.createStatement();
@@ -38,7 +34,7 @@ public class jdbcExample {
         for (Meal meal : meals) {
             System.out.println(meal.getId() + " " + meal.getName() + " " +
                     meal.getPrice());
-        }
+        }*/
 
     }
 }

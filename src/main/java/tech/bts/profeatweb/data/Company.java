@@ -1,8 +1,6 @@
-package data;
+package tech.bts.profeatweb.data;
 
 import java.sql.Time;
-import java.util.Date;
-import java.util.Map;
 
 public class Company {
 

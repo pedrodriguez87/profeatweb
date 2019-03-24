@@ -1,4 +1,4 @@
-package data;
+package tech.bts.profeatweb.data;
 
 public class Restaurant {
 
