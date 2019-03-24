@@ -1,20 +1,30 @@
 package data;
 
+import java.util.List;
+import java.util.Map;
+
 public class Meal {
 
     private long id;
     private String name;
-    private long price;
+    private double price;
+    private int rate;
     private String mainprotein;
+    private Restaurant restaurant;
     private vegetables hasvegetables;
     private typeofdish typeofdish;
+    private Map<Employee, String> feedbacks;
 
-    public Meal(String name, long price, String mainprotein, vegetables hasvegetables, typeofdish typeofdish) {
+    public Meal(long id, String name, double price, int rate, String mainprotein, Restaurant restaurant, vegetables hasvegetables, Meal.typeofdish typeofdish, Map<Employee, String> feedbacks) {
+        this.id = id;
         this.name = name;
         this.price = price;
+        this.rate = rate;
         this.mainprotein = mainprotein;
+        this.restaurant = restaurant;
         this.hasvegetables = hasvegetables;
         this.typeofdish = typeofdish;
+        this.feedbacks = feedbacks;
     }
 
     public long getId() {
@@ -33,12 +43,20 @@ public class Meal {
         this.name = name;
     }
 
-    public long getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(long price) {
+    public void setPrice(double price) {
         this.price = price;
+    }
+
+    public int getRate() {
+        return rate;
+    }
+
+    public void setRate(int rate) {
+        this.rate = rate;
     }
 
     public String getMainprotein() {
@@ -47,6 +65,14 @@ public class Meal {
 
     public void setMainprotein(String mainprotein) {
         this.mainprotein = mainprotein;
+    }
+
+    public Restaurant getRestaurant() {
+        return restaurant;
+    }
+
+    public void setRestaurant(Restaurant restaurant) {
+        this.restaurant = restaurant;
     }
 
     public vegetables getHasvegetables() {
