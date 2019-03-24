@@ -26,7 +26,6 @@ public class jdbcExample {
             int id = rs.getInt("id");
             String name = rs.getString("name");
             long price = rs.getLong("price");
-            String mainprotein = rs.getString("Protein");
             System.out.println(id + ", " + name + ", " + price);
 
         }
@@ -38,7 +37,7 @@ public class jdbcExample {
         System.out.println("Meals: ");
         for (Meal meal : meals) {
             System.out.println(meal.getId() + " " + meal.getName() + " " +
-                    meal.getPrice() + " " + meal.getMainprotein());
+                    meal.getPrice());
         }
 
     }
