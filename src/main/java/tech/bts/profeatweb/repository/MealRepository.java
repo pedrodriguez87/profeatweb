@@ -2,6 +2,7 @@ package tech.bts.profeatweb.repository;
 import tech.bts.profeatweb.data.Meal;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
+import tech.bts.profeatweb.util.database.SqlBuilder;
 
 import javax.sql.DataSource;
 import java.sql.ResultSet;
@@ -13,22 +14,23 @@ import java.util.Map;
 @Repository
 public class MealRepository {
 
-    private Map<Long, Meal> mealMap;
-    private long nextId;
+    //private Map<Long, Meal> mealMap;
+    //private long nextId;
     private JdbcTemplate jdbcTemplate;
 
+
     public MealRepository() {
-        mealMap = new HashMap<>();
-        nextId = 0;
+        //mealMap = new HashMap<>();
+        //nextId = 0;
         DataSource dataSource = DataSourceUtil.getDataSourceInPath();
         this.jdbcTemplate = new JdbcTemplate(dataSource);
     }
 
     public void create(Meal meal) {
         //add meal to map
-        meal.setId(nextId);
-        mealMap.put(meal.getId(), meal);
-        nextId++;
+        //meal.setId(nextId);
+        //mealMap.put(meal.getId(), meal);
+        //nextId++;
 
         //add meal to database
         jdbcTemplate.update("insert into meals (name, price) values ('" + meal.getName() + "', '" + meal.getPrice() + "')");
@@ -40,8 +42,11 @@ public class MealRepository {
         //from the map -> return mealMap.get(id);
 
         //from the database
-        return jdbcTemplate.queryForObject("SELECT * FROM meals WHERE id =" + id, (resultSet, rowNum) -> getMeal(resultSet));
-
+        String sql = new SqlBuilder()
+                .from("meals")
+                .where("id", "=", id)
+                .build();
+        return jdbcTemplate.queryForObject(sql, (resultSet, rowNum) -> getMeal(resultSet));
     }
 
     private Meal getMeal(ResultSet resultSet) throws SQLException {
@@ -61,6 +66,7 @@ public class MealRepository {
         //from the map -> return mealMap.values();
 
         //from the database
-        return jdbcTemplate.query("SELECT * FROM meals", (resultSet, rowNum) -> getMeal(resultSet));
+        String sql = new SqlBuilder().from("meals").build();
+        return jdbcTemplate.query(sql, (resultSet, rowNum) -> getMeal(resultSet));
     }
 }

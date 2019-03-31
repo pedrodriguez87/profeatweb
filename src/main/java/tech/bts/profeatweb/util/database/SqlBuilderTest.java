@@ -1,5 +1,6 @@
 package tech.bts.profeatweb.util.database;
 
+import com.github.jknack.handlebars.internal.lang3.ObjectUtils;
 import org.hamcrest.CoreMatchers;
 import org.junit.Test;
 
@@ -54,6 +55,16 @@ public class SqlBuilderTest {
                 .where("price", "<=", 12)
                 .build();
         assertThat(sql, is("select * from meals where name = 'Paella' and price <= 12"));
+    }
+
+    @Test
+    public void whereWithNulls() {
+        String sql = new SqlBuilder()
+                .from("meals")
+                .where("name", "=", null)
+                .where("price", "<=", null)
+                .build();
+        assertThat(sql, is("select * from meals"));
     }
 
 }

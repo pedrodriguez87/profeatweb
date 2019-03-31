@@ -37,8 +37,11 @@ public class SqlBuilder {
 
         if (value instanceof String) {
             valueStr = "'" + value + "'";
+        } else if (value == null){
+            return this;
         } else {
             valueStr = value.toString();
+
         }
         String condition = column + " " + operator + " " + valueStr;
         return where(condition);
