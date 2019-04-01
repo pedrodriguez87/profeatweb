@@ -11,8 +11,8 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
-@Repository
-public class MealRepositoryJdbc {
+
+public class MealRepositoryJdbc implements MealRepository{
 
     //private Map<Long, Meal> mealMap;
     //private long nextId;
