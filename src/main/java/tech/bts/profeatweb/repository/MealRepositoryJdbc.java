@@ -12,14 +12,14 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Repository
-public class MealRepository {
+public class MealRepositoryJdbc {
 
     //private Map<Long, Meal> mealMap;
     //private long nextId;
     private JdbcTemplate jdbcTemplate;
 
 
-    public MealRepository() {
+    public MealRepositoryJdbc() {
         //mealMap = new HashMap<>();
         //nextId = 0;
         DataSource dataSource = DataSourceUtil.getDataSourceInPath();

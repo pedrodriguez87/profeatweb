@@ -3,17 +3,17 @@ package tech.bts.profeatweb.service;
 import tech.bts.profeatweb.data.Meal;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import tech.bts.profeatweb.repository.MealRepository;
+import tech.bts.profeatweb.repository.MealRepositoryJdbc;
 
 import java.util.Collection;
 
 @Service
 public class MealService {
 
-    private MealRepository mealRepo;
+    private MealRepositoryJdbc mealRepo;
 
     @Autowired
-    public MealService(MealRepository mealRepo) {
+    public MealService(MealRepositoryJdbc mealRepo) {
         this.mealRepo = mealRepo;
     }
 
