@@ -13,4 +13,8 @@ public interface MealRepository {
     Meal getById(Long id);
 
     Collection<Meal> getAll();
+
+    void update(Meal meal);
+
+    void remove(Meal meal);
 }

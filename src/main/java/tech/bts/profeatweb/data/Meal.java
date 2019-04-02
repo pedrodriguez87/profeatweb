@@ -1,33 +1,46 @@
 package tech.bts.profeatweb.data;
 
+import java.util.HashMap;
 import java.util.Map;
 
 public class Meal {
+
+    public enum DishType {
+        STARTER('S'), MAIN('M');
+
+        private char initialChar;
+
+        DishType(char initialChar) {
+            this.initialChar = initialChar;
+        }
+    }
 
     private long id;
     private String name;
     private double price;
     private int rate;
-    private String mainprotein;
     private Restaurant restaurant;
-    private vegetables hasvegetables;
-    private typeofdish typeofdish;
+    private DishType typeOfDish;
     private Map<Employee, String> feedbacks;
+    private Map<String, Object> nutritionalInfo;
+    //private String mainProtein;
+    //private vegetables hasVegetables;
+
 
     public Meal() {
+        this.feedbacks = new HashMap<>();
+        this.nutritionalInfo = new HashMap<>();
 
     }
 
-    public Meal(long id, String name, double price, int rate, String mainprotein, Restaurant restaurant, vegetables hasvegetables, Meal.typeofdish typeofdish, Map<Employee, String> feedbacks) {
-        this.id = id;
+    public Meal(String name, double price, int rate, Restaurant restaurant, DishType typeOfDish) {
         this.name = name;
         this.price = price;
         this.rate = rate;
-        this.mainprotein = mainprotein;
         this.restaurant = restaurant;
-        this.hasvegetables = hasvegetables;
-        this.typeofdish = typeofdish;
-        this.feedbacks = feedbacks;
+        this.typeOfDish = typeOfDish;
+        this.feedbacks = new HashMap<>();
+        this.nutritionalInfo = new HashMap<>();
     }
 
     public long getId() {
@@ -62,14 +75,6 @@ public class Meal {
         this.rate = rate;
     }
 
-    public String getMainprotein() {
-        return mainprotein;
-    }
-
-    public void setMainprotein(String mainprotein) {
-        this.mainprotein = mainprotein;
-    }
-
     public Restaurant getRestaurant() {
         return restaurant;
     }
@@ -78,34 +83,33 @@ public class Meal {
         this.restaurant = restaurant;
     }
 
-    public vegetables getHasvegetables() {
-        return hasvegetables;
+    public DishType getTypeOfDish() {
+        return typeOfDish;
     }
 
-    public void setHasvegetables(vegetables hasvegetables) {
-        this.hasvegetables = hasvegetables;
+    public void setTypeOfDish(DishType typeOfDish) {
+        this.typeOfDish = typeOfDish;
     }
 
-    public Meal.typeofdish getTypeofdish() {
-        return typeofdish;
+    public Map<Employee, String> getFeedbacks() {
+        return feedbacks;
     }
 
-    public void setTypeofdish(Meal.typeofdish typeofdish) {
-        this.typeofdish = typeofdish;
+    public void setFeedbacks(Map<Employee, String> feedbacks) {
+        this.feedbacks = feedbacks;
     }
 
-    public enum vegetables {
-        YES, NO
+    public Map<String, Object> getNutritionalInfo() {
+        return nutritionalInfo;
     }
 
-    public enum typeofdish {
-        first, second
+    public void setNutritionalInfo(Map<String, Object> nutritionalInfo) {
+        this.nutritionalInfo = nutritionalInfo;
     }
 
     @Override
     public String toString() {
-        return "Name: " + name + " ,Price: " + price + " ,Protein: " + mainprotein +
-                " ,Vegetables: " + hasvegetables + " ,First or second: " + typeofdish;
+        return "Name: " + name + ", Price: " + price + ", First or second: " + typeOfDish;
     }
 }
 

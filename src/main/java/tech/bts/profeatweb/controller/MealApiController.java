@@ -44,4 +44,11 @@ public class MealApiController {
             throw new Exception();
         }
     }
+
+    @RequestMapping(method = POST, path = "/{mealId")
+    public long updateMeal(@PathVariable long id) {
+        Meal meal = mealService.getMealById(id);
+        mealService.updateMeal(meal);
+        return meal.getId();
+    }
 }

@@ -31,5 +31,8 @@ public class MealService {
         return mealRepo.getById(id);
     }
 
+    public void updateMeal(Meal meal) {
+        mealRepo.update(meal);
+    }
 
 }

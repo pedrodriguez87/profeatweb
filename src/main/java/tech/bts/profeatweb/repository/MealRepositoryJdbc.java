@@ -12,36 +12,20 @@ import java.util.HashMap;
 import java.util.Map;
 
 
-public class MealRepositoryJdbc implements MealRepository{
+public class MealRepositoryJdbc {
 
-    //private Map<Long, Meal> mealMap;
-    //private long nextId;
     private JdbcTemplate jdbcTemplate;
 
-
     public MealRepositoryJdbc() {
-        //mealMap = new HashMap<>();
-        //nextId = 0;
         DataSource dataSource = DataSourceUtil.getDataSourceInPath();
         this.jdbcTemplate = new JdbcTemplate(dataSource);
     }
 
     public void create(Meal meal) {
-        //add meal to map
-        //meal.setId(nextId);
-        //mealMap.put(meal.getId(), meal);
-        //nextId++;
-
-        //add meal to database
         jdbcTemplate.update("insert into meals (name, price) values ('" + meal.getName() + "', '" + meal.getPrice() + "')");
-
-        //BE AWARE THAT THIS WAY MEALS MAY HAVE DIFFERENT ID IN THE MAP AND IN THE DATABASE!!!
     }
 
     public Meal getById(Long id) {
-        //from the map -> return mealMap.get(id);
-
-        //from the database
         String sql = new SqlBuilder()
                 .from("meals")
                 .where("id", "=", id)
@@ -63,9 +47,6 @@ public class MealRepositoryJdbc implements MealRepository{
     }
 
     public Collection<Meal> getAll() {
-        //from the map -> return mealMap.values();
-
-        //from the database
         String sql = new SqlBuilder().from("meals").build();
         return jdbcTemplate.query(sql, (resultSet, rowNum) -> getMeal(resultSet));
     }
