@@ -3,3 +3,15 @@
     border: 1px solid gray;
     padding: 10px;
 }
+
+.email {
+    color: blue;
+}
+
+.correct {
+    color: green;
+}
+
+.incorrect {
+    color: red;
+}

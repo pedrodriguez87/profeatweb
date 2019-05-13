@@ -6,6 +6,7 @@ import org.bson.types.ObjectId;
 import org.springframework.stereotype.Repository;
 import tech.bts.profeatweb.data.User;
 
+import javax.jws.soap.SOAPBinding;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -77,6 +78,20 @@ public class UserRepositoryMongo implements UserRepository{
         users.findOneAndDelete(doc("_id", user.getId()));
     }
 
+    @Override
+    public boolean login(User user) {
+        boolean validation = false;
+        MongoCursor<Document> usersCursor = users.find().iterator();
+        while (usersCursor.hasNext()) {
+            User userInDb = getUser(usersCursor);
+            if (userInDb.getEmail().equals(user.getEmail()) && userInDb.getPassword().equals(user.getPassword())) {
+                validation = true;
+            }
+        }
+
+        return validation;
+    }
+
     private void setIdByEmail(User user) {
         String value = '"' + user.getEmail() + '"';
         Document query = doc("email", value);
@@ -88,4 +103,5 @@ public class UserRepositoryMongo implements UserRepository{
         }
         usersCursor.close();
     }
+
 }

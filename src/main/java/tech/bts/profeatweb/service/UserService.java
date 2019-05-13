@@ -36,4 +36,7 @@ public class UserService {
         userRepo.update(user);
     }
 
+    public boolean login(User user) {
+        return userRepo.login(user);
+    }
 }

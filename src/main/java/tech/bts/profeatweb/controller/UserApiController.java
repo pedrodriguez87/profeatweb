@@ -51,4 +51,9 @@ public class UserApiController {
         userService.updateUser(user);
         return user.getId();
     }
+
+    @PostMapping("/login")
+    public boolean login(@RequestBody User user) {
+        return userService.login(user);
+    }
 }

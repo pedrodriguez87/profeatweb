@@ -4,7 +4,7 @@ class App extends React.Component {
         super(props);
 
         this.state = {
-            users: [],
+            meals: [],
             user: {
                 email: "",
                 password: "",
@@ -14,10 +14,10 @@ class App extends React.Component {
     }
 
     componentDidMount() {
-        const mealsPromise = axios.get("/api/users");
+        const mealsPromise = axios.get("/api/meals");
 
         mealsPromise.then(response => {
-            this.setState({users: response.data});
+            this.setState({meals: response.data});
             console.log(response.data);
         });
     }
@@ -29,14 +29,17 @@ class App extends React.Component {
 
         <div>
         <div>
-        Email: <input onChange={(event) => this.updateField(event, "email")} type="text"/>
+        Email: <input className={"email"} onChange={(event) => this.updateField(event, "email")} type="text"/>
             </div>
-            <div>
+            <div id={"main"}>
             Password: <input onChange={(event) => this.updateField(event, "password")} type="password"/>
             </div>
             <div>
             <button onClick={() => this.register()}>Sign Up</button>
         </div>
+            <div>
+                <button onClick={() => this.login()}>Login</button>
+            </div>
         </div>
         </div>
         );
@@ -56,6 +59,31 @@ class App extends React.Component {
 
     }
 
+    login() {
+        const user = this.state.user;
+        const promise = axios.post("/api/users/login", user);
+
+        promise.then(response => {
+            const validation = response.data;
+            let div = document.getElementById("main");
+            let p = document.createElement("p");
+
+            let text = "";
+
+            if (validation) {
+                text = document.createTextNode("Correct credentials");
+                p.className = "correct"
+                //console.log("Correct credentials");
+            } else {
+                text = document.createTextNode("Wrong password or email");
+                p.className = "incorrect"
+                //console.log("Wrong password or email");
+            }
+
+            p.appendChild(text);
+            div.appendChild(p);
+        })
+    }
     updateField(event, property) {
         console.log("input changed");
 

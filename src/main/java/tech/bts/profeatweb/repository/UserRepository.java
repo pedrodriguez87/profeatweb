@@ -16,4 +16,6 @@ public interface UserRepository {
     void update(User user);
 
     void remove(User user);
+
+    boolean login(User user);
 }
