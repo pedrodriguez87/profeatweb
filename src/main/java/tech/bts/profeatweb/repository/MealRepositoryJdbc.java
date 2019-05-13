@@ -14,7 +14,7 @@ import java.util.Map;
 
 public class MealRepositoryJdbc {
 
-    private JdbcTemplate jdbcTemplate;
+    /*private JdbcTemplate jdbcTemplate;
 
     public MealRepositoryJdbc() {
         DataSource dataSource = DataSourceUtil.getDataSourceInPath();
@@ -49,5 +49,5 @@ public class MealRepositoryJdbc {
     public Collection<Meal> getAll() {
         String sql = new SqlBuilder().from("meals").build();
         return jdbcTemplate.query(sql, (resultSet, rowNum) -> getMeal(resultSet));
-    }
+    }*/
 }

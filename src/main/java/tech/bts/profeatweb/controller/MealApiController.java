@@ -24,7 +24,7 @@ public class MealApiController {
     }
 
     @RequestMapping(method = POST)
-    public long createMeal() {
+    public String createMeal() {
         Meal meal = mealService.createMeal();
         return meal.getId();
     }
@@ -46,7 +46,7 @@ public class MealApiController {
     }
 
     @RequestMapping(method = POST, path = "/{mealId")
-    public long updateMeal(@PathVariable long id) {
+    public String updateMeal(@PathVariable long id) {
         Meal meal = mealService.getMealById(id);
         mealService.updateMeal(meal);
         return meal.getId();

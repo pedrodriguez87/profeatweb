@@ -30,7 +30,6 @@ public class MealService {
     public Meal getMealById(long id) {
         return mealRepo.getById(id);
     }
-
     public void updateMeal(Meal meal) {
         mealRepo.update(meal);
     }
