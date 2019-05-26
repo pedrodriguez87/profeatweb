@@ -48,7 +48,7 @@ public class MongoExample {
 
         mealsCursor.close();*/
 
-        MealRepositoryMongo mealRepo = new MealRepositoryMongo();
+        /*MealRepositoryMongo mealRepo = new MealRepositoryMongo();
 
         Meal meal1 = new Meal("Paella", 12, 5, new Restaurant(), Meal.DishType.MAIN);
         Meal meal2 = new Meal("Sushi", 18.5, 4, new Restaurant(), Meal.DishType.STARTER);
@@ -63,6 +63,6 @@ public class MongoExample {
         System.out.println(meal1.getId());
         System.out.println(meal2.getId());
         System.out.println(meal3.getId());
-        System.out.println(meal4.getId());
+        System.out.println(meal4.getId());*/
     }
 }
