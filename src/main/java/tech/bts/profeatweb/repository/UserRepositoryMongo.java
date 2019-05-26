@@ -3,6 +3,7 @@ package tech.bts.profeatweb.repository;
 import com.mongodb.client.*;
 import org.bson.Document;
 import org.bson.types.ObjectId;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Repository;
 import tech.bts.profeatweb.data.User;
 
@@ -18,9 +19,9 @@ public class UserRepositoryMongo implements UserRepository{
 
     private MongoCollection<Document> users;
 
-    public UserRepositoryMongo() {
-        MongoClient mongoClient = MongoClients.create();
-        MongoDatabase database = mongoClient.getDatabase("profeat");
+    public UserRepositoryMongo(@Value("${mongoUri}") String mongoUri) {
+        MongoClient mongoClient = MongoClients.create(mongoUri);
+        MongoDatabase database = mongoClient.getDatabase("test");
         this.users = database.getCollection("users");
     }
 
