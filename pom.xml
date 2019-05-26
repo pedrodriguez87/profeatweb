@@ -92,7 +92,7 @@
                 <version>1.6</version>
 
                 <configuration>
-                    <workingDirectory>src/webapp</workingDirectory>
+                    <workingDirectory>src/profeat</workingDirectory>
                     <installDirectory>target</installDirectory>
                 </configuration>
 
