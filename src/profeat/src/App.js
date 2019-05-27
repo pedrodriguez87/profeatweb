@@ -64,6 +64,7 @@ class App extends React.Component {
     }
 
     login() {
+        console.log("inside login")
         const user = this.state.user;
         const promise = axios.post("/api/users/login", user);
 
