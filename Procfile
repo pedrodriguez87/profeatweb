@@ -1,1 +1,1 @@
-web: java -jar target/mealsinfo-1.0-SNAPSHOT.jar
+web: java -jar target/profeatweb-1.0-SNAPSHOT.jar
